@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import products from "../data/products.json";
 import Layout from "../app/layout";
+import nextConfig from '../../next.config.mjs';
 
 export default function Shop() {
   return (
@@ -41,7 +42,7 @@ export default function Shop() {
             >
               <VStack mb={16} spacing={0}>
                 <Image
-                  src={"/images/" + product.images[0]}
+                  src={`${nextConfig.basePath || ''}/images/${product.images[0]}`}
                   alt={product.name}
                   borderRadius="16px"
                   w="100%"
