@@ -6,7 +6,10 @@
     "image": "https://via.placeholder.com/150?text=Blackberry+Burst",
     "description": "Rich and flavorful blackberry jam.",
     "size": "250ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/blackberry.jpg"
+    ]
   },
   {
     "id": 3,
@@ -14,7 +17,10 @@
     "image": "https://via.placeholder.com/150?text=Apple+Jam",
     "description": "Delicious organic apple jam.",
     "size": "370ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/apple.jpg"
+    ]
   },
   {
     "id": 9,
@@ -22,7 +28,10 @@
     "image": "https://via.placeholder.com/150?text=Pumpkin+Jam",
     "description": "Smooth and sweet pumpkin jam.",
     "size": "370ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/pumpkin.jpg"
+    ]
   },
   {
     "id": 10,
@@ -30,7 +39,20 @@
     "image": "https://via.placeholder.com/150?text=Black+Currant+Jam",
     "description": "Tangy and flavorful black currant jam.",
     "size": "370ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/blackcurrant.jpg"
+    ]
+  },{
+    "id": 10,
+    "name": "Red Currant Jam",
+    "image": "https://via.placeholder.com/150?text=Black+Currant+Jam",
+    "description": "Tangy and flavorful black currant jam.",
+    "size": "370ml",
+    "price": 5.00,
+    "images": [
+      "/jam/redcurrant.jpg"
+    ]
   },
   {
     "id": 1,
@@ -38,7 +60,10 @@
     "image": "https://via.placeholder.com/150?text=Raspberry+Rush",
     "description": "Fresh organic raspberry jam.",
     "size": "250ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/raspberry.jpg"
+    ]
   },
   {
     "id": 11,
@@ -46,7 +71,10 @@
     "image": "https://via.placeholder.com/150?text=Gooseberry+Jam",
     "description": "Fresh organic gooseberry jam.",
     "size": "370ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/gooseberry.jpg"
+    ]
   },
   {
     "id": 12,
@@ -54,6 +82,9 @@
     "image": "https://via.placeholder.com/150?text=Cherry+Plum+Jam",
     "description": "Sweet and tart cherry plum jam.",
     "size": "370ml",
-    "price": 5.00
+    "price": 5.00,
+    "images": [
+      "/jam/cherryplum.jpg"
+    ]
   }
 ]
