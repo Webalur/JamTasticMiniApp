@@ -1,0 +1,59 @@
+[
+
+  {
+    "id": 2,
+    "name": "Blackberry Jam",
+    "image": "https://via.placeholder.com/150?text=Blackberry+Burst",
+    "description": "Rich and flavorful blackberry jam.",
+    "size": "250ml",
+    "price": 5.00
+  },
+  {
+    "id": 3,
+    "name": "Apple Jam",
+    "image": "https://via.placeholder.com/150?text=Apple+Jam",
+    "description": "Delicious organic apple jam.",
+    "size": "370ml",
+    "price": 5.00
+  },
+  {
+    "id": 9,
+    "name": "Pumpkin Jam",
+    "image": "https://via.placeholder.com/150?text=Pumpkin+Jam",
+    "description": "Smooth and sweet pumpkin jam.",
+    "size": "370ml",
+    "price": 5.00
+  },
+  {
+    "id": 10,
+    "name": "Black Currant Jam",
+    "image": "https://via.placeholder.com/150?text=Black+Currant+Jam",
+    "description": "Tangy and flavorful black currant jam.",
+    "size": "370ml",
+    "price": 5.00
+  },
+  {
+    "id": 1,
+    "name": "Raspberry Jam",
+    "image": "https://via.placeholder.com/150?text=Raspberry+Rush",
+    "description": "Fresh organic raspberry jam.",
+    "size": "250ml",
+    "price": 5.00
+  },
+  {
+    "id": 11,
+    "name": "Gooseberry Jam",
+    "image": "https://via.placeholder.com/150?text=Gooseberry+Jam",
+    "description": "Fresh organic gooseberry jam.",
+    "size": "370ml",
+    "price": 5.00
+  },
+  {
+    "id": 12,
+    "name": "Cherry Plum Jam",
+    "image": "https://via.placeholder.com/150?text=Cherry+Plum+Jam",
+    "description": "Sweet and tart cherry plum jam.",
+    "size": "370ml",
+    "price": 5.00
+  }
+]
