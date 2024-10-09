@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Box bg="white" minHeight="100vh" p={5}>
       {/* Header Section */}
-      <Heading as="h1" size="2xl" textAlign="center" mb={1} fontFamily="Impact, sans-serif" mt={4}>
+      <Heading as="h1" size="2xl" textAlign="center" mb={1} fontFamily="Impact, sans-serif" mt={0}>
         <Text as="span" color="#ad0000">JAM</Text>
         <Text as="span" color="#002c8b">TASTIC</Text>
       </Heading>
@@ -37,11 +37,12 @@ export default function Home() {
           >
             <VStack spacing={2}>
               <Image src={product.image} alt={product.name} borderRadius="lg" w="100%" />
-              <Text fontFamily="'Bebas Neue', sans-serif" fontWeight="bold" color="#ad0000">
+              <Text fontSize="20px" fontFamily="'Bebas Neue', sans-serif" height="52px"
+              fontWeight="bold" color="#ad0000">
                 {product.name.toUpperCase()}
               </Text>
               <Text>Size: {product.size}</Text>
-              <Text>Price: ${product.price}</Text>
+              <Text color="#ad0000" fontSize={'28px'} fontWeight={'bold'}>{product.price.toFixed(2)} €</Text>
               <Button bg="#002c8b" color="white" _hover={{ bg: '#001d6b' }} variant="solid">
                 ADD
               </Button>
