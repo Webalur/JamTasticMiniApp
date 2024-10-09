@@ -17,7 +17,7 @@ export default function Shop() {
       <Box bg="white" minHeight="100vh" mb={60}>
         <Box
           textAlign="center"
-          backgroundColor={"#eeeeee"}
+          backgroundColor={"#ffffff"}
           borderRadius={"16px"}
         >
           <Heading textAlign="center" fontFamily="Impact, sans-serif">
