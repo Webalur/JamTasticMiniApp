@@ -4,6 +4,7 @@
 const nextConfig = {
     output: 'export',
     trailingSlash: true,
+    basePath: '/JamTasticMiniApp',
     images: {
       unoptimized: true,
     },
