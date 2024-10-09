@@ -37,7 +37,7 @@ export default function Home() {
           >
             <VStack spacing={2}>
               <Image src={product.image} alt={product.name} borderRadius="lg" w="100%" />
-              <Text fontSize="22px" fontFamily="'Bebas Neue', sans-serif" height="52px"
+              <Text fontSize="24px" fontFamily="'Bebas Neue', sans-serif" height="52px"
               fontWeight="bold" color="#ad0000">
                 {product.name.toUpperCase()}
               </Text>
