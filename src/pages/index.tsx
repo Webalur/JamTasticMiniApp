@@ -1,6 +1,9 @@
 import {
   Box,
   Grid,
+  Card,
+  CardMedia,
+  CardActionArea,
   Container,
 } from "@mui/material";
 import Layout from '../app/layout';
@@ -21,34 +24,40 @@ export default function Home() {
       <Box
         sx={{
           backgroundColor: "white",
-          minHeight: "100vh",
-          p: 2,
+          p: 0,
           textAlign: "center",
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={2} justifyContent="center" sx={{ mt: 8 }}>
           {images.map((image, index) => (
-            <Grid item xs={12} sm={4} key={index}>
+            <Grid item xs={6} sm={6} md={4} key={index}>
               <NextLink href="/shop" passHref>
-                <Box
+                <Card
                   sx={{
-                    display: "block",
-                    borderRadius: "32px",
-                    overflow: "hidden",
-                    width: "100%",
-                    maxWidth: "800px",
+                    maxWidth: 200,
                     margin: "0 auto",
-                    cursor: "pointer",
+                    borderRadius: "16px",
+                    boxShadow: 3,
                   }}
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={800}
-                    height={600}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                </Box>
+                  <CardActionArea>
+                    <CardMedia
+                      component={() => (
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={100}
+                          height={100}
+                          style={{ width: "100%", height: "auto" }}
+                        />
+                      )}
+                      sx={{
+                        borderRadius: "16px",
+                        overflow: "hidden",
+                      }}
+                    />
+                  </CardActionArea>
+                </Card>
               </NextLink>
             </Grid>
           ))}

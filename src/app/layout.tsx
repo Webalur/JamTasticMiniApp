@@ -53,6 +53,7 @@ function Menu() {
         right: 0,
         backgroundColor: "rgba(0, 0, 0, 0.7)",
         padding: 1,
+        height: "80px"
       }}
     >
       <Toolbar sx={{ justifyContent: "space-around" }}>
