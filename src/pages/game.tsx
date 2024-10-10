@@ -1,21 +1,50 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Typography,
+} from "@mui/material";
 import Layout from '../app/layout';
+import Image from 'next/image';
+import nextConfig from '../../next.config.mjs';
 
-export default function Game() {
+export default function Home() {
   return (
     <Layout>
-      <Box bg="white" minHeight="100vh" p={5}>
-        <Heading as="h1" size="2xl" textAlign="center" mb={5} fontFamily="Impact, sans-serif">
-          Game
-        </Heading>
-        <Text fontSize="lg" textAlign="center" mb={5}>
-          Welcome to Jamtastic! We are passionate about creating organic, delicious jams made from the freshest ingredients.
-          Our mission is to bring you the taste of happiness in every jar, using sustainable practices and natural flavors.
-        </Text>
-        <Text fontSize="md" textAlign="center">
-          Our jams are crafted with love and care, ensuring that every spoonful is packed with flavor and goodness.
-          Thank you for supporting our journey to make the world a little sweeter, one jar at a time.
-        </Text>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          minHeight: "100vh",
+          p: 0,
+          mt: 4,
+          textAlign: "center",
+        }}
+      >
+        <Typography
+          component="span"
+          color="#002c8b"
+          fontSize={30}
+          fontFamily="Impact, sans-serif"
+        >
+          0000
+        </Typography>
+        <Box
+          component="div"
+          sx={{
+            borderRadius: "128px",
+            overflow: "hidden",
+            width: "80%",
+            maxWidth: "800px",
+            margin: "40px auto",
+            cursor: "pointer",
+          }}
+        >
+          <Image
+            src={`${nextConfig.basePath || ''}/images/apple.png`}
+            alt="Apple"
+            width={800}
+            height={600}
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Box>
       </Box>
     </Layout>
   );

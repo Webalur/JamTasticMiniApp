@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import { ReactNode, useEffect, useState } from "react";
 import NextLink from "next/link";
-import { usePathname } from "next/navigation";
 
 import {
   Home as HomeIcon,
@@ -22,8 +21,6 @@ import {
 } from "@mui/icons-material";
 
 function Menu() {
-  const pathname = usePathname();
-  const [clientPathname, setClientPathname] = useState("");
 
   // Define a single menu for all pages
   const menuItems = [
@@ -63,7 +60,6 @@ function Menu() {
           return (
             <NextLink href={href} passHref key={label}>
               <Box
-                component="a"
                 sx={{
                   display: "flex",
                   flexDirection: "column",
