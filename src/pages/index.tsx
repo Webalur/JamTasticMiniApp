@@ -4,7 +4,6 @@ import {
   Card,
   CardMedia,
   CardActionArea,
-  Container,
 } from "@mui/material";
 import Layout from '../app/layout';
 import NextLink from 'next/link';
@@ -28,7 +27,19 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        <Grid container spacing={2} justifyContent="center" sx={{ mt: 8 }}>
+        {/* Top Image */}
+        <Box sx={{ maxWidth: 400, margin: "0 auto", mb: 2, mt:2 }}>
+          <Image
+            src={`${nextConfig.basePath || ''}/images/labels/label.png`}
+            alt="Top Label"
+            width={400}
+            height={200}
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Box>
+
+        {/* Products Grid */}
+        <Grid container spacing={2} justifyContent="center" sx={{ mt: 0 }}>
           {images.map((image, index) => (
             <Grid item xs={6} sm={6} md={4} key={index}>
               <NextLink href="/shop" passHref>

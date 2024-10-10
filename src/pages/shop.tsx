@@ -56,9 +56,9 @@ export default function Shop() {
         </Box>
 
         {/* Products Grid */}
-        <Grid container spacing={2} justifyContent="center" sx={{ mt: 8 }}>
+        <Grid container spacing={2} justifyContent="center" sx={{ mt: 0 }}>
           {products.map((product) => (
-            <Grid item xs={6} sm={6} md={4} key={product.id}>
+            <Grid item xs={6} sm={6} md={3} key={product.id}>
               <Card
                 sx={{
                   borderRadius: 4,
@@ -67,6 +67,7 @@ export default function Shop() {
                   backgroundColor: "#fefefe",
                   padding: 0,
                   lineHeight: 1,
+                  maxWidth: "200px"
                 }}
               >
                 <CardMedia
@@ -121,6 +122,7 @@ export default function Shop() {
                         backgroundColor: "#dddddd",
                       },
                       textTransform: "none",
+                      width: "80%"
                     }}
                   >
                     Add
