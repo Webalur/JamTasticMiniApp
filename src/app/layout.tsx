@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Box,
   Typography,
@@ -11,9 +9,7 @@ import {
 import { ReactNode, useEffect, useState } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
 
-// Importing icons
 import {
   Home as HomeIcon,
   Store as StoreIcon,
@@ -25,44 +21,30 @@ import {
   HelpOutline as HelpIcon,
 } from "@mui/icons-material";
 
-// Dynamically load the Menu component with client-side rendering
-const Menu = dynamic(() => Promise.resolve(ClientMenu), { ssr: false });
-
-function ClientMenu() {
+function Menu() {
   const pathname = usePathname();
   const [clientPathname, setClientPathname] = useState("");
 
-useEffect(() => {
-  setClientPathname(pathname ?? "");
-}, [pathname]);
-
-
-  // Define different menu items based on the current path
-  const getMenuItems = () => {
-    if (
-      clientPathname === "/shop" ||
-      clientPathname === "/payment" ||
-      clientPathname === "/delivery" ||
-      clientPathname === "/about"
-    ) {
-      return [
-        { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
-        { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
-        { label: "Payment", icon: <CreditCardIcon fontSize="medium" />, href: "/payment" },
-        { label: "Shipping", icon: <TruckIcon fontSize="medium" />, href: "/delivery" },
-        { label: "About", icon: <HelpIcon fontSize="medium" />, href: "/about" },
-      ];
-    }
-    return [
-      { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
-      { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
-      { label: "Game", icon: <GameIcon fontSize="medium" />, href: "/game" },
-      { label: "Earn", icon: <EarnIcon fontSize="medium" />, href: "/earn" },
-      { label: "Info", icon: <InfoIcon fontSize="medium" />, href: "/info" },
-    ];
-  };
-
-  const menuItems = getMenuItems();
+  // Define a single menu for all pages
+  const menuItems = [
+    { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
+    { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
+    { label: "Game", icon: <GameIcon fontSize="medium" />, href: "/game" },
+    { label: "Earn", icon: <EarnIcon fontSize="medium" />, href: "/earn" },
+    { label: "Info", icon: <InfoIcon fontSize="medium" />, href: "/info" },
+  ];
+/*
+  const menuItems = [
+    { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
+    { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
+    { label: "Game", icon: <GameIcon fontSize="medium" />, href: "/game" },
+    { label: "Earn", icon: <EarnIcon fontSize="medium" />, href: "/earn" },
+    { label: "Payment", icon: <CreditCardIcon fontSize="medium" />, href: "/payment" },
+    { label: "Shipping", icon: <TruckIcon fontSize="medium" />, href: "/delivery" },
+    { label: "About", icon: <HelpIcon fontSize="medium" />, href: "/about" },
+    { label: "Info", icon: <InfoIcon fontSize="medium" />, href: "/info" },
+  ];
+  */
 
   return (
     <AppBar
@@ -78,7 +60,6 @@ useEffect(() => {
     >
       <Toolbar sx={{ justifyContent: "space-around" }}>
         {menuItems.map(({ label, icon, href }) => {
-          const isActive = clientPathname === href || (clientPathname === "/" && label === "Home");
           return (
             <NextLink href={href} passHref key={label}>
               <Box
@@ -87,14 +68,14 @@ useEffect(() => {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  color: isActive ? "#ffffff" : "#aaaaaa",
+                  color: "#eeeeee",
                   textDecoration: "none",
                 }}
               >
                 <IconButton
                   aria-label={label}
                   size="small"
-                  sx={{ color: isActive ? "#ffffff" : "#aaaaaa" }}
+                  sx={{ color: "#eeeeee" }}
                 >
                   {icon}
                 </IconButton>
@@ -102,7 +83,7 @@ useEffect(() => {
                   variant="caption"
                   sx={{
                     textDecoration: "none",
-                    color: isActive ? "#ffffff" : "#aaaaaa",
+                    color: "#eeeeee",
                   }}
                 >
                   {label}
