@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   Box,
@@ -7,13 +7,15 @@ import {
   AppBar,
   Toolbar,
   Container,
+  Dialog,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import NextLink from "next/link";
-import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
 
-// Importing icons
 import {
   Home as HomeIcon,
   Store as StoreIcon,
@@ -23,46 +25,18 @@ import {
   SportsEsports as GameIcon,
   MonetizationOn as EarnIcon,
   HelpOutline as HelpIcon,
+  Menu as MenuIcon,
 } from "@mui/icons-material";
 
-// Dynamically load the Menu component with client-side rendering
-const Menu = dynamic(() => Promise.resolve(ClientMenu), { ssr: false });
-
-function ClientMenu() {
-  const pathname = usePathname();
-  const [clientPathname, setClientPathname] = useState("");
-
-useEffect(() => {
-  setClientPathname(pathname ?? "");
-}, [pathname]);
-
-
-  // Define different menu items based on the current path
-  const getMenuItems = () => {
-    if (
-      clientPathname === "/shop" ||
-      clientPathname === "/payment" ||
-      clientPathname === "/delivery" ||
-      clientPathname === "/about"
-    ) {
-      return [
-        { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
-        { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
-        { label: "Payment", icon: <CreditCardIcon fontSize="medium" />, href: "/payment" },
-        { label: "Shipping", icon: <TruckIcon fontSize="medium" />, href: "/delivery" },
-        { label: "About", icon: <HelpIcon fontSize="medium" />, href: "/about" },
-      ];
-    }
-    return [
-      { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
-      { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
-      { label: "Game", icon: <GameIcon fontSize="medium" />, href: "/game" },
-      { label: "Earn", icon: <EarnIcon fontSize="medium" />, href: "/earn" },
-      { label: "Info", icon: <InfoIcon fontSize="medium" />, href: "/info" },
-    ];
-  };
-
-  const menuItems = getMenuItems();
+function Menu() {
+  // Define a single menu for all pages
+  const menuItems = [
+    { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
+    { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
+    { label: "Game", icon: <GameIcon fontSize="medium" />, href: "/game" },
+    { label: "Earn", icon: <EarnIcon fontSize="medium" />, href: "/earn" },
+    { label: "Info", icon: <InfoIcon fontSize="medium" />, href: "/info" },
+  ];
 
   return (
     <AppBar
@@ -72,29 +46,29 @@ useEffect(() => {
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
+        backgroundColor: "rgba(0, 44, 139, 0.8)",
         padding: 1,
+        height: "80px",
+        backdropFilter: "blur(8px)",
       }}
     >
       <Toolbar sx={{ justifyContent: "space-around" }}>
         {menuItems.map(({ label, icon, href }) => {
-          const isActive = clientPathname === href || (clientPathname === "/" && label === "Home");
           return (
             <NextLink href={href} passHref key={label}>
               <Box
-                component="a"
                 sx={{
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  color: isActive ? "#ffffff" : "#aaaaaa",
+                  color: "#eeeeee",
                   textDecoration: "none",
                 }}
               >
                 <IconButton
                   aria-label={label}
                   size="small"
-                  sx={{ color: isActive ? "#ffffff" : "#aaaaaa" }}
+                  sx={{ color: "#eeeeee" }}
                 >
                   {icon}
                 </IconButton>
@@ -102,7 +76,7 @@ useEffect(() => {
                   variant="caption"
                   sx={{
                     textDecoration: "none",
-                    color: isActive ? "#ffffff" : "#aaaaaa",
+                    color: "#eeeeee",
                   }}
                 >
                   {label}
@@ -117,6 +91,22 @@ useEffect(() => {
 }
 
 function Header() {
+  const [open, setOpen] = useState(false);
+
+  const fullMenuItems = [
+    { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
+    { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
+    { label: "Game", icon: <GameIcon fontSize="medium" />, href: "/game" },
+    { label: "Earn", icon: <EarnIcon fontSize="medium" />, href: "/earn" },
+    { label: "Payment", icon: <CreditCardIcon fontSize="medium" />, href: "/payment" },
+    { label: "Shipping", icon: <TruckIcon fontSize="medium" />, href: "/delivery" },
+    { label: "About", icon: <HelpIcon fontSize="medium" />, href: "/about" },
+    { label: "Info", icon: <InfoIcon fontSize="medium" />, href: "/info" },
+  ];
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <AppBar
       position="fixed"
@@ -129,6 +119,16 @@ function Header() {
       }}
     >
       <Toolbar>
+        {/* Hamburger Menu Icon */}
+        <IconButton
+          edge="start"
+          aria-label="menu"
+          onClick={handleOpen}
+          sx={{ mr: 1, color: "#002c8b" }}
+        >
+          <MenuIcon />
+        </IconButton>
+
         <Typography
           sx={{ flexGrow: 1, display: "flex", alignItems: "center", pl: 0 }}
         >
@@ -140,6 +140,20 @@ function Header() {
           </Typography>
         </Typography>
       </Toolbar>
+
+      {/* Dialog for the full menu */}
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+        <List>
+          {fullMenuItems.map(({ label, icon, href }) => (
+            <NextLink href={href} passHref key={label}>
+              <ListItem button component="a" onClick={handleClose}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={label} />
+              </ListItem>
+            </NextLink>
+          ))}
+        </List>
+      </Dialog>
     </AppBar>
   );
 }
@@ -149,6 +163,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <Container
       sx={{
         minHeight: "100vh",
+        width: "100%",
         position: "relative",
         paddingBottom: 20,
         paddingX: 0,
