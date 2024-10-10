@@ -146,7 +146,7 @@ function Header() {
         <List>
           {fullMenuItems.map(({ label, icon, href }) => (
             <NextLink href={href} passHref key={label}>
-              <ListItem button component="a" onClick={handleClose}>
+              <ListItem component="a" onClick={handleClose}>
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText primary={label} />
               </ListItem>
