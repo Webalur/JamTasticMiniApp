@@ -11,6 +11,9 @@ import {
 import { ReactNode, useEffect, useState } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+
+// Importing icons
 import {
   Home as HomeIcon,
   Store as StoreIcon,
@@ -22,20 +25,26 @@ import {
   HelpOutline as HelpIcon,
 } from "@mui/icons-material";
 
-function Menu() {
-  const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
+// Dynamically load the Menu component with client-side rendering
+const Menu = dynamic(() => Promise.resolve(ClientMenu), { ssr: false });
 
-  // Detect when the component has mounted
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+function ClientMenu() {
+  const pathname = usePathname();
+  const [clientPathname, setClientPathname] = useState("");
+
+useEffect(() => {
+  setClientPathname(pathname ?? "");
+}, [pathname]);
+
 
   // Define different menu items based on the current path
   const getMenuItems = () => {
-    console.log('pathname', pathname);
-    if (pathname === "/shop/" || pathname === "/payment/" || pathname === "/delivery/" || pathname === "/about/") {
-      // Custom menu for the /shop page
+    if (
+      clientPathname === "/shop" ||
+      clientPathname === "/payment" ||
+      clientPathname === "/delivery" ||
+      clientPathname === "/about"
+    ) {
       return [
         { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
         { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
@@ -44,7 +53,6 @@ function Menu() {
         { label: "About", icon: <HelpIcon fontSize="medium" />, href: "/about" },
       ];
     }
-    // Default menu items for other pages
     return [
       { label: "Home", icon: <HomeIcon fontSize="medium" />, href: "/" },
       { label: "Shop", icon: <StoreIcon fontSize="medium" />, href: "/shop" },
@@ -55,11 +63,6 @@ function Menu() {
   };
 
   const menuItems = getMenuItems();
-
-  if (!mounted) {
-    // Avoid rendering the menu until the component is mounted on the client
-    return null;
-  }
 
   return (
     <AppBar
@@ -75,9 +78,7 @@ function Menu() {
     >
       <Toolbar sx={{ justifyContent: "space-around" }}>
         {menuItems.map(({ label, icon, href }) => {
-          console.log('pathname', pathname);
-          console.log('href', href);
-          const isActive = pathname === href + '/' || ( pathname === '/' && label==='Home');
+          const isActive = clientPathname === href || (clientPathname === "/" && label === "Home");
           return (
             <NextLink href={href} passHref key={label}>
               <Box
