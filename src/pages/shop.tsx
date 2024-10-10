@@ -1,86 +1,93 @@
 import {
   Box,
-  Heading,
-  SimpleGrid,
-  Text,
-  Image,
-  VStack,
+  Typography,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
   Button,
-} from "@chakra-ui/react";
+} from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import products from "../data/products.json";
 import Layout from "../app/layout";
-import nextConfig from '../../next.config.mjs';
+import nextConfig from "../../next.config.mjs";
 
 export default function Shop() {
   return (
     <Layout>
-      <Box bg="white" minHeight="100vh" mb={60}>
-        <Box
-          textAlign="center"
-          backgroundColor={"#ffffff"}
-          borderRadius={"16px"}
-        >
-          <Heading textAlign="center" fontFamily="Impact, sans-serif">
-            <Text as="span" color="#ad0000" fontSize={"36px"}>
-              SHOP
-            </Text>
-          </Heading>
-        </Box>
+      <Box bgcolor="white" minHeight="100vh" textAlign="center">
 
         {/* Products Grid */}
-        <SimpleGrid columns={2} spacing="8px">
+        <Grid container spacing={2} justifyContent="center">
           {products.map((product) => (
-            <Box
-              key={product.id}
-              borderRadius="16px"
-              p={0}
-              pb={2}
-              mb={4}
-              boxShadow="lg"
-              textAlign="center"
-              backgroundColor={"#eeeeee"}
-            >
-              <VStack mb={16} spacing={0}>
-                <Image
-                  src={`${nextConfig.basePath || ''}/images/${product.images[0]}`}
+            <Grid item xs={6} sm={6} md={4} key={product.id}>
+              <Card
+                sx={{
+                  borderRadius: 4,
+                  boxShadow: 3,
+                  textAlign: "center",
+                  backgroundColor: "#fefefe",
+                  padding: 0,
+                  lineHeight: 1
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  src={`${nextConfig.basePath || ""}/images/${product.images[0]}`}
                   alt={product.name}
-                  borderRadius="16px"
-                  w="100%"
-                  maxHeight="200px"
-                  objectFit="cover"
-                  aspectRatio={1}
+                  sx={{
+                    borderTopLeftRadius: "16px",
+                    borderTopRightRadius: "16px",
+                    maxHeight: 200,
+                    objectFit: "cover",
+                    aspectRatio: "1",
+                  }}
                 />
-                <Text
-                  fontFamily="'Bebas Neue', sans-serif"
-                  fontWeight="bold"
-                  color="#ad0000"
-                  fontSize={"18px"}
-                >
-                  {product.name.toUpperCase()}
-                </Text>
-                <Text>Size: {product.size}</Text>
-                <Text
-                  fontFamily="'Bebas Neue', sans-serif"
-                  color="#ad0000"
-                  fontSize={"28px"}
-                  fontWeight={"bold"}
-                >
-                  {product.price.toFixed(2)} €
-                </Text>
-                <Button
-                  bg="#002c8b"
-                  color="white"
-                  _hover={{ bg: "#001d6b" }}
-                  variant="solid"
-                  size={"sm"}
-                  colorScheme="teal"
-                >
-                  ADD
-                </Button>
-              </VStack>
-            </Box>
+                <CardContent sx={{
+                    padding: "8px 0",
+                    lineHeight: 1
+                  }}>
+                  <Typography
+                    fontSize={'18px'}
+                    fontFamily="'Bebas Neue', sans-serif"
+                    fontWeight="bold"
+                    color="#002c8b"
+                    gutterBottom
+                    height={'20px'} m={0} mb={2} lineHeight={1.2}
+                  >
+                    {product.name}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    fontFamily="'Bebas Neue', sans-serif"
+                    color="#ad0000"
+                    fontWeight="bold"
+                  >
+                    {product.price.toFixed(2)} €
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ justifyContent: "center", marginBottom: 1 }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<ShoppingCartIcon />}
+                    sx={{
+                      backgroundColor: "#eeeeee",
+                      color: "#002c8b",
+                      "&:hover": {
+                        backgroundColor: "#001f6b",
+                      },
+                      textTransform: "none"
+                    }}
+                  >
+                    Add
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
           ))}
-        </SimpleGrid>
+        </Grid>
       </Box>
     </Layout>
   );
