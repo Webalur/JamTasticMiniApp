@@ -1,13 +1,9 @@
 {
-  "/_error": "pages/_error.js",
-  "/about": "pages/about.js",
   "/_app": "pages/_app.js",
-  "/earn": "pages/earn.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/info": "pages/info.js",
-  "/delivery": "pages/delivery.js",
   "/shop": "pages/shop.js",
-  "/game": "pages/game.js",
-  "/payment": "pages/payment.js",
-  "/_document": "pages/_document.js"
+  "/info": "pages/info.js",
+  "/game": "pages/game.js"
 }
